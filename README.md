@@ -7,7 +7,7 @@ Based on work from [Martin Heidegger](https://github.com/martinheidegger)
 ## Install
 
 ```
-npm install workshopper-adventure --save
+npm install workshopper-adventure-storage --save
 ```
 
 ```js
