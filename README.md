@@ -2,7 +2,11 @@
 
 Simple storage for [workshopper-adventure](https://github.com/workshopper/workshopper-adventure)
 
-Based on work from [Martin Heidegger](https://github.com/martinheidegger)
+Originally included as part of workshopper-adventure, mostly written by [Martin Heidegger](https://github.com/martinheidegger)
+
+Based on prior work of:
+[@substack](https://github.com/substack)
+[@rvagg](https://github.com/rvagg)
 
 ## Install
 
