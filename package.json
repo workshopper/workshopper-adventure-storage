@@ -1,0 +1,24 @@
+{
+  "name": "workshopper-adventure-storage",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kid-icarus/workshopper-adventure-storage.git"
+  },
+  "author": "Ryan Kois",
+  "license": "MIT",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
+}
