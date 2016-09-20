@@ -1,17 +1,20 @@
-const fs = require('fs')
-const path = require('path')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
+var fs = require('fs')
+var path = require('path')
+var mkdirp = require('mkdirp')
+var rimraf = require('rimraf')
 
 function createSimpleStorage () {
-  const dir = path.join.apply(path, arguments)
-  const fileName = (name) => path.resolve(dir, `${name}.json`)
+  var dir = path.join.apply(path, arguments)
+
+  function fileName (name) {
+    return path.resolve(dir, name + '.json')
+  }
 
   /**
    * Delete the storage directory.
    */
-  const reset = (cb) => {
-    rimraf(dir, (err) => {
+  function reset (cb) {
+    rimraf(dir, function (err) {
       if (err) return cb(err)
       cb()
     })
@@ -20,10 +23,10 @@ function createSimpleStorage () {
   /**
    * Serialize and save a file to the storage directory.
    */
-  const save = (name, data, cb) => {
-    mkdirp(dir, (err) => {
+  function save (name, data, cb) {
+    mkdirp(dir, function (err) {
       if (err) return cb(err)
-      fs.writeFile(fileName(name), JSON.stringify(data), (err, saveData) => {
+      fs.writeFile(fileName(name), JSON.stringify(data), function (err, saveData) {
         if (err) return cb(err)
         cb()
       })
@@ -33,9 +36,9 @@ function createSimpleStorage () {
   /**
    * Read and unserialize a file from the storage directory.
    */
-  const get = (name, cb) => {
-    const file = fileName(name)
-    fs.readFile(file, 'utf8', (err, fileData) => {
+  function get (name, cb) {
+    var file = fileName(name)
+    fs.readFile(file, 'utf8', function (err, fileData) {
       if (err) return cb(err)
       try {
         fileData = JSON.parse(fileData)
@@ -47,10 +50,10 @@ function createSimpleStorage () {
   }
 
   return {
-    dir,
-    reset,
-    save,
-    get
+    dir: dir,
+    reset: reset,
+    save: save,
+    get: get
   }
 }
 

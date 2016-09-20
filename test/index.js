@@ -1,10 +1,10 @@
-const storage = require('..')
-const fs = require('fs')
-const expect = require('chai').expect
+var storage = require('..')
+var fs = require('fs')
+var expect = require('chai').expect
 
 describe('Storage', function () {
-  const fileName = './foo/bar/index.json'
-  let testStorage
+  var fileName = './foo/bar/index.json'
+  var testStorage
 
   /**
    * Initialize storage and save a file.
@@ -13,7 +13,7 @@ describe('Storage', function () {
     testStorage = storage('foo', 'bar')
     testStorage.save('index', {
       foo: 'bar'
-    }, (err) => {
+    }, function (err) {
       if (err) return done(err)
       done()
     })
@@ -25,9 +25,9 @@ describe('Storage', function () {
   })
 
   it('should save serialized storage to the data directory', function (done) {
-    fs.readFile(fileName, (err, data) => {
+    fs.readFile(fileName, function (err, data) {
       if (err) return done(err)
-      let fileData
+      var fileData
 
       try {
         fileData = JSON.parse(data)
@@ -39,7 +39,7 @@ describe('Storage', function () {
   })
 
   it('should retrive a stored file', function (done) {
-    testStorage.get('index', (err, file) => {
+    testStorage.get('index', function (err, file) {
       if (err) return done(err)
       expect(file.foo).to.equal('bar')
       done()
@@ -47,8 +47,8 @@ describe('Storage', function () {
   })
 
   it('should clean the storage directory', function (done) {
-    testStorage.reset(() => {
-      fs.stat('./foo/bar', (err, stats) => {
+    testStorage.reset(function () {
+      fs.stat('./foo/bar', function (err, stats) {
         if (err && err.code === 'ENOENT') return done()
         done('file still exists!')
       })
