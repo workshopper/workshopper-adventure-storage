@@ -41,17 +41,6 @@ JSON encodes and writes a file to the storage directory. The following will
 save the file as `index.json`.
 
 ```js
-storage.save('index', {
-  foo: 'bar'
-}, (err) => {
-  if (err) throw err
-})
-```
-
-## storage.get('name')
-JSON encodes and writes a file to the storage directory.
-
-```js
 const data = {
   foo: 'bar'
 }
