@@ -1,4 +1,6 @@
-# workshopper-adventure-storage [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# workshopper-adventure-storage
+
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 Simple storage for [workshopper-adventure](https://github.com/workshopper/workshopper-adventure)
 
@@ -83,3 +85,5 @@ storage.reset((err) => {
 
 [travis-url]: https://travis-ci.org/kid-icarus/workshopper-adventure-storage
 [travis-image]: https://travis-ci.org/kid-icarus/workshopper-adventure-storage.png?branch=master
+[coveralls-url]: https://coveralls.io/github/kid-icarus/workshopper-adventure-storage?branch=master
+[coveralls-image]: https://coveralls.io/repos/github/kid-icarus/workshopper-adventure-storage/badge.svg?branch=master
