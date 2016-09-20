@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test"
+    "test": "eslint .; mocha ./test"
   },
   "keywords": [],
   "repository": {
@@ -13,12 +13,23 @@
   },
   "author": "Ryan Kois",
   "license": "MIT",
+  "eslintConfig": {
+    "extends": "standard",
+    "env": {
+      "node": true,
+      "mocha": true
+    }
+  },
   "dependencies": {
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.5.0",
+    "eslint-config-standard": "^6.0.1",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
     "mocha": "^3.0.2"
   }
 }
