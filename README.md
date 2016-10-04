@@ -72,7 +72,7 @@ storage.reset((err) => {
 [npm-url]: https://npmjs.org/package/workshopper-adventure-storage
 [npm-image]: http://img.shields.io/npm/v/workshopper-adventure-storage.svg
 
-[travis-url]: https://travis-ci.org/kid-icarus/workshopper-adventure-storage
-[travis-image]: https://travis-ci.org/kid-icarus/workshopper-adventure-storage.png?branch=master
-[coveralls-url]: https://coveralls.io/github/kid-icarus/workshopper-adventure-storage?branch=master
-[coveralls-image]: https://coveralls.io/repos/github/kid-icarus/workshopper-adventure-storage/badge.svg?branch=master
+[travis-url]: https://travis-ci.org/workshopper/workshopper-adventure-storage
+[travis-image]: https://travis-ci.org/workshopper/workshopper-adventure-storage.png?branch=master
+[coveralls-url]: https://coveralls.io/github/workshopper/workshopper-adventure-storage?branch=master
+[coveralls-image]: https://coveralls.io/repos/github/workshopper/workshopper-adventure-storage/badge.svg?branch=master
