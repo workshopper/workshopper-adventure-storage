@@ -1,6 +1,7 @@
 # workshopper-adventure-storage
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+[![NPM deps][deps-image]][deps-url] [![NPM dev devp][dev-deps-image]][dev-deps-url]
 
 Simple storage for [workshopper-adventure](https://github.com/workshopper/workshopper-adventure)
 
@@ -71,6 +72,12 @@ storage.reset((err) => {
 [downloads-image]: http://img.shields.io/npm/dm/workshopper-adventure-storage.svg
 [npm-url]: https://npmjs.org/package/workshopper-adventure-storage
 [npm-image]: http://img.shields.io/npm/v/workshopper-adventure-storage.svg
+
+[deps-url]:https://david-dm.org/workshopper/workshopper-adventure-storage
+[deps-image]: https://img.shields.io/david/workshopper/workshopper-adventure-storage.svg
+
+[dev-deps-url]: https://david-dm.org/workshopper/workshopper-adventure-storage?type=dev
+[dev-deps-image]: https://img.shields.io/david/dev/workshopper/workshopper-adventure-storage.svg
 
 [travis-url]: https://travis-ci.org/workshopper/workshopper-adventure-storage
 [travis-image]: https://travis-ci.org/workshopper/workshopper-adventure-storage.png?branch=master
