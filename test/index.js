@@ -7,22 +7,13 @@ describe('Storage', function () {
   var invalidJson = './foo/bar/invalid.json'
   var testStorage = storage('foo', 'bar')
 
-
   /**
    * Initialize storage and save a file.
    */
-  beforeEach(function (done) {
-    function writeBadJson (err) {
-      if (err) return done(err)
-      fs.writeFile(invalidJson, '{', done)
-    }
-
-    testStorage.reset(function (err) {
-      if (err) return done(err)
-      testStorage.save('index', {
-        foo: 'bar'
-      }, writeBadJson)
-    })
+  beforeEach(function () {
+    testStorage.reset()
+    testStorage.save('index', { foo: 'bar' })
+    fs.writeFileSync(invalidJson, '{')
   })
 
   it('should have a data directory', function () {
@@ -47,34 +38,30 @@ describe('Storage', function () {
 
   describe('#get', function () {
     it('should retrive a stored file', function (done) {
-      testStorage.get('index', function (err, file) {
-        if (err) return done(err)
-        expect(file.foo).to.equal('bar')
-        done()
-      })
+      var file = testStorage.get('index')
+      expect(file.foo).to.equal('bar')
+      done()
     })
 
     it('handle invalid JSON', function (done) {
       fs.readFile(invalidJson, function (err, data) {
         if (err) return done(err)
-        var fileData
         try {
-          fileData = JSON.parse(data)
+          JSON.parse(data)
         } catch (e) {
-          return done()
+          return done(err)
         }
-        done('read the file!')
+        done()
       })
     })
   })
 
   describe('#reset', function () {
     it('should clean the storage directory', function (done) {
-      testStorage.reset(function () {
-        fs.stat('./foo/bar', function (err, stats) {
-          if (err && err.code === 'ENOENT') return done()
-          done('file still exists!')
-        })
+      testStorage.reset()
+      fs.stat('./foo/bar', function (err, stats) {
+        if (err && err.code === 'ENOENT') return done()
+        done('file still exists!')
       })
     })
   })
