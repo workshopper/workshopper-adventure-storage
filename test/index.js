@@ -21,13 +21,12 @@ describe('Storage', function () {
     expect(testStorage.dir).to.equal('foo/bar')
   })
 
-  describe('#save', function() {
+  describe('#save', function () {
     it('should save serialized storage to the data directory', function (done) {
       fs.readFile(fileName, function (err, data) {
         if (err) return done(err)
-        var fileData
         try {
-          fileData = JSON.parse(data)
+          JSON.parse(data)
         } catch (e) {
           done(e)
         }
