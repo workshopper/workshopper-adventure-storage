@@ -37,7 +37,7 @@ const storage = require('workshopper-adventure-storage')
 ## storage([dir[, ...]])
 Accepts a sequence of paths for `path.resolve` to use as the storage directory.
 
-## storage.save('name', data', cb)
+## storage.save('name', data')
 JSON encodes and writes a file to the storage directory. The following will
 save the file as `index.json`.
 
@@ -45,28 +45,21 @@ save the file as `index.json`.
 const data = {
   foo: 'bar'
 }
-storage.save('index', data, (err) => {
-  if (err) throw err
-})
+storage.save('index', data)
 ```
 
-## storage.get('name', cb)
+## storage.get('name')
 Retrieves and unserializes a file from storage.
 
 ```js
-storage.get('index', (err, data) => {
-  if (err) throw err
-  console.log(file)
-})
+var data = storage.get('index')
 ```
 
-## storage.reset(cb)
+## storage.reset()
 Clears the storage directory.
 
 ```js
-storage.reset((err) => {
-  if (err) throw err
-})
+storage.reset()
 ```
 
 [downloads-image]: http://img.shields.io/npm/dm/workshopper-adventure-storage.svg
