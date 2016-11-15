@@ -145,4 +145,30 @@ describe('Storage', function () {
       expect(storage.get('a')).to.be.equal(null)
     })
   })
+
+  describe('inaccessible storage', function () {
+    var storage = create()
+    before(function () {
+      rimraf.sync(userDir)
+      mkdirp.sync(storageDir)
+      fs.writeFileSync(fileNameA, '{"x": 1}')
+      fs.chmodSync(fileNameA, 0)
+      fs.chmodSync(storageDir, 0)
+    })
+
+    it('should still not break get', function () {
+      expect(storage.get('a')).to.be.equal(null)
+    })
+
+    it('should just not store if a file isn\'t writable', function () {
+      storage.save('a', 1)
+      expect(storage.get('a')).to.be.equal(null)
+    })
+
+    after(function () {
+      try { fs.chmodSync(storageDir, 0O770) } catch (e) {}
+      try { fs.chmodSync(fileNameA, 0O770) } catch (e) {}
+      rimraf.sync(userDir)
+    })
+  })
 })
