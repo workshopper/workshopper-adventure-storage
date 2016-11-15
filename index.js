@@ -22,7 +22,11 @@ function createSimpleStorage () {
    */
   function save (name, data) {
     mkdirp.sync(dir)
-    fs.writeFileSync(fileName(name), JSON.stringify(data))
+    try {
+      fs.writeFileSync(fileName(name), JSON.stringify(data, null, 2))
+    } catch (e) {
+      // TODO: write this error in a log
+    }
   }
 
   /**
@@ -30,8 +34,18 @@ function createSimpleStorage () {
    */
   function get (name, cb) {
     var file = fileName(name)
-    var fileData = fs.readFileSync(file, 'utf8')
-    return JSON.parse(fileData)
+    try {
+      var fileData = fs.readFileSync(file, 'utf8')
+    } catch (e) {
+      // TODO: write this error in a log
+      return null
+    }
+    try {
+      return JSON.parse(fileData)
+    } catch (e) {
+      // TODO: write this error in a log
+      return null
+    }
   }
 
   return {
