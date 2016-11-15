@@ -37,7 +37,8 @@ const storage = require('workshopper-adventure-storage')
 ## storage([dir[, ...]])
 Accepts a sequence of paths for `path.resolve` to use as the storage directory.
 
-## storage.save('name', data')
+## storage.save('name', data)
+
 JSON encodes and writes a file to the storage directory. The following will
 save the file as `index.json`.
 

@@ -13,7 +13,7 @@ function createSimpleStorage () {
   /**
    * Delete the storage directory.
    */
-  function reset (cb) {
+  function reset () {
     rimraf.sync(dir)
   }
 
@@ -32,7 +32,7 @@ function createSimpleStorage () {
   /**
    * Read and unserialize a file from the storage directory.
    */
-  function get (name, cb) {
+  function get (name) {
     var file = fileName(name)
     try {
       var fileData = fs.readFileSync(file, 'utf8')
