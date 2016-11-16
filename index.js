@@ -13,7 +13,7 @@ function createSimpleStorage () {
   /**
    * Delete the storage directory.
    */
-  function reset (cb) {
+  function reset () {
     rimraf.sync(dir)
   }
 
@@ -22,16 +22,30 @@ function createSimpleStorage () {
    */
   function save (name, data) {
     mkdirp.sync(dir)
-    fs.writeFileSync(fileName(name), JSON.stringify(data))
+    try {
+      fs.writeFileSync(fileName(name), JSON.stringify(data, null, 2))
+    } catch (e) {
+      // TODO: write this error in a log
+    }
   }
 
   /**
    * Read and unserialize a file from the storage directory.
    */
-  function get (name, cb) {
+  function get (name) {
     var file = fileName(name)
-    var fileData = fs.readFileSync(file, 'utf8')
-    return JSON.parse(fileData)
+    try {
+      var fileData = fs.readFileSync(file, 'utf8')
+    } catch (e) {
+      // TODO: write this error in a log
+      return null
+    }
+    try {
+      return JSON.parse(fileData)
+    } catch (e) {
+      // TODO: write this error in a log
+      return null
+    }
   }
 
   return {
