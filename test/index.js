@@ -14,7 +14,11 @@ describe('Storage', function () {
 
   function assertStorageNonExistence () {
     try {
-      fs.accessSync(storageDir)
+      if (fs.accessSync) {
+        fs.accessSync(storageDir)
+      } else {
+        fs.statSync(storageDir)
+      }
     } catch (e) {
       expect(e.code).to.be.equals('ENOENT')
       return
