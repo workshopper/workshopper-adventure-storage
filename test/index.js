@@ -166,8 +166,8 @@ describe('Storage', function () {
     })
 
     after(function () {
-      try { fs.chmodSync(storageDir, 0O770) } catch (e) {}
-      try { fs.chmodSync(fileNameA, 0O770) } catch (e) {}
+      fs.chmodSync(storageDir, 448)
+      fs.chmodSync(fileNameA, 448)
       rimraf.sync(userDir)
     })
   })
