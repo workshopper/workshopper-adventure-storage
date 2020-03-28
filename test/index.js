@@ -78,7 +78,7 @@ describe('Storage', function () {
     it('should store readable files', function () {
       // For debugging we want the files to be stored
       // in a fashion that is readable to humans
-      create().save('a', {x: 1})
+      create().save('a', { x: 1 })
       expect(fs.readFileSync(fileNameA, 'utf8')).to.be.equals('{\n  "x": 1\n}')
     })
 
