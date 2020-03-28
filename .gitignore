@@ -3,3 +3,4 @@ npm-debug.log
 .coveralls.yml
 coverage
 typings
+.nyc_output

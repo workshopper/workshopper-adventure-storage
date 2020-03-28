@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . ; istanbul cover _mocha --report lcovonly -- -R spec",
+    "test": "eslint . ; nyc mocha --reporter=lcov -- -R spec",
     "cov": " cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "mkdirp": "^1.0.3",
+    "nyc": "^15.0.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
@@ -32,7 +33,6 @@
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "istanbul": "^0.4.5",
     "mocha": "^7.1.1",
     "mocha-lcov-reporter": "^1.2.0"
   }
