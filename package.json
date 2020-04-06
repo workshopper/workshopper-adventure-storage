@@ -1,16 +1,23 @@
 {
   "name": "workshopper-adventure-storage",
   "version": "3.0.0",
-  "description": "",
+  "description": "Storage system for workshopper-adventure to store the preferences.",
   "main": "index.js",
   "scripts": {
     "test": "standard --env mocha && nyc mocha --reporter=lcov -- -R spec",
     "cov": " cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
-  "keywords": [],
+  "files": [
+    "index.js",
+    "test/**"
+  ],
+  "keywords": [
+    "workshopper",
+    "util"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kid-icarus/workshopper-adventure-storage.git"
+    "url": "git+https://github.com/workshopper/workshopper-adventure-storage.git"
   },
   "author": "Ryan Kois",
   "license": "MIT",
