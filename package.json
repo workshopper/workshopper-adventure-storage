@@ -1,6 +1,6 @@
 {
   "name": "workshopper-adventure-storage",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Storage system for workshopper-adventure to store the preferences.",
   "main": "index.js",
   "scripts": {
