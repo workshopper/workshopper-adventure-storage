@@ -71,6 +71,21 @@ Clears the storage directory.
 storage.reset()
 ```
 
+## storage.promises
+
+This module seamlessly supports async operations using the `.promises` object.
+
+```js
+const storage =
+  createStorage(createStorage.userDir, 'promise-workshop')
+    .promises;
+
+storage.dir // works synchronously
+await storage.save('name', {})
+await storage.get('name')
+await storage.reset()
+```
+
 [downloads-image]: http://img.shields.io/npm/dm/workshopper-adventure-storage.svg
 [npm-url]: https://npmjs.org/package/workshopper-adventure-storage
 [npm-image]: http://img.shields.io/npm/v/workshopper-adventure-storage.svg

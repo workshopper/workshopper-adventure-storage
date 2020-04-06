@@ -15,6 +15,16 @@ function createSimpleStorage () {
   function reset () {
     rimraf.sync(dir)
   }
+  function resetPromise () {
+    return new Promise(function (resolve, reject) {
+      rimraf(dir, function (error) {
+        if (error) {
+          return reject(error)
+        }
+        resolve(error)
+      })
+    })
+  }
 
   /**
    * Serialize and save a file to the storage directory.
@@ -26,6 +36,15 @@ function createSimpleStorage () {
     } catch (e) {
       // TODO: write this error in a log
     }
+  }
+  function savePromise (name, data) {
+    return fs.promises.mkdir(dir, { recursive: true })
+      .then(function () {
+        return fs.promises.writeFile(fileName(name), JSON.stringify(data, null, 2))
+      })
+      .catch(function () {
+        // TODO: write this error in a log
+      })
   }
 
   /**
@@ -46,12 +65,28 @@ function createSimpleStorage () {
       return null
     }
   }
+  function getPromise (name) {
+    return fs.promises.readFile(fileName(name), 'utf8')
+      .then(function (fileData) {
+        return JSON.parse(fileData)
+      })
+      .catch(function () {
+        // TODO: write this error in a log
+        return null
+      })
+  }
 
   return {
     dir: dir,
     reset: reset,
     save: save,
-    get: get
+    get: get,
+    promises: {
+      dir: dir,
+      reset: resetPromise,
+      save: savePromise,
+      get: getPromise
+    }
   }
 }
 
