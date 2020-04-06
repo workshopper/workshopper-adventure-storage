@@ -3,7 +3,6 @@ var fs = require('fs')
 var expect = require('chai').expect
 var rimraf = require('rimraf')
 var path = require('path')
-var mkdirp = require('mkdirp')
 
 describe('Storage', function () {
   var userDir = path.join(__dirname, '..', '.tmp')
@@ -124,7 +123,7 @@ describe('Storage', function () {
     var storage = create()
     beforeEach(function () {
       rimraf.sync(userDir)
-      mkdirp.sync(storageDir)
+      fs.mkdirSync(storageDir, { recursive: true })
       fs.writeFileSync(fileNameA, '{')
     })
 
@@ -154,7 +153,7 @@ describe('Storage', function () {
     var storage = create()
     before(function () {
       rimraf.sync(userDir)
-      mkdirp.sync(storageDir)
+      fs.mkdirSync(storageDir, { recursive: true })
       fs.writeFileSync(fileNameA, '{"x": 1}')
       fs.chmodSync(fileNameA, 0)
       fs.chmodSync(storageDir, 0)
