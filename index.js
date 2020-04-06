@@ -1,6 +1,5 @@
 var fs = require('fs')
 var path = require('path')
-var mkdirp = require('mkdirp')
 var rimraf = require('rimraf')
 
 function createSimpleStorage () {
@@ -21,7 +20,7 @@ function createSimpleStorage () {
    * Serialize and save a file to the storage directory.
    */
   function save (name, data) {
-    mkdirp.sync(dir)
+    fs.mkdirSync(dir, { recursive: true })
     try {
       fs.writeFileSync(fileName(name), JSON.stringify(data, null, 2))
     } catch (e) {
