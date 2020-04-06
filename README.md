@@ -18,26 +18,34 @@ npm install workshopper-adventure-storage --save
 ```
 
 ```js
-const storage = require('workshopper-adventure-storage')
+const createStorage = require('workshopper-adventure-storage')
+```
+
+## Usage
+
+
+### createStorage.userDir
+
+A default path to store data in.
+
+### createStorage([dir[, ...]])
+
+Accepts a sequence of paths for `path.resolve` to use as the storage directory.
+
+```js
+const createStorage = require('workshopper-adventure-storage')
+const storage = createStorage(createStorage.userDir, 'my-workshopper')
 ```
 
 ## Properties
 
-## storage.dir
+### storage.dir
+
 The path to store data in.
 
-## storage.userDir
-A default path to store data in.
-
 ## Methods
-```js
-const storage = require('workshopper-adventure-storage')
-```
 
-## storage([dir[, ...]])
-Accepts a sequence of paths for `path.resolve` to use as the storage directory.
-
-## storage.save('name', data)
+### storage.save('name', data)
 
 JSON encodes and writes a file to the storage directory. The following will
 save the file as `index.json`.
